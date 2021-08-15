@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import NavBar from "../components/NavBar";
+import SideBar from "../components/SideBar";
 import {
   Modal,
   useDisclosure,
@@ -14,8 +15,13 @@ import {
   Image,
   Text,
   Spacer,
+  Square,
+  Center,
+  Grid,
+  Heading,
 } from "@chakra-ui/react";
 import metamask from "../utils/metamask.svg";
+import BG01 from "../utils/BG01.png";
 import Web3 from "web3";
 
 export default function HomePage() {
@@ -50,31 +56,36 @@ export default function HomePage() {
     <>
       <NavBar onOpen={onOpen} onClose={onClose} account={account} />
 
-      <Box tabIndex={-1}>Home page</Box>
+      <Box>
+        <Flex tabIndex={-1} justify="center" direction="vertical">
+          <Heading>Home Page</Heading>
+          <Heading>zpaze-z</Heading>
+        </Flex>
 
-      <Modal sizes="xs" isOpen={isOpen} onClose={onClose} isCentered>
-        <ModalOverlay />
+        <Modal sizes="xs" isOpen={isOpen} onClose={onClose} isCentered>
+          <ModalOverlay />
 
-        <ModalContent>
-          <ModalHeader bg="gray.100">Connect Wallet</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <Flex justify="center">
-              <Button onClick={connnectMetamask} bg="orange.500" size="md">
-                <Image
-                  src={metamask}
-                  alt="metamask"
-                  boxSize="20px"
-                  objectFit="cover"
-                />
-                <Text color="white" fontSize="lg">
-                  Metamask
-                </Text>
-              </Button>
-            </Flex>
-          </ModalBody>
-        </ModalContent>
-      </Modal>
+          <ModalContent>
+            <ModalHeader bg="gray.100">Connect Wallet</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              <Flex justify="center">
+                <Button onClick={connnectMetamask} bg="orange.500" size="md">
+                  <Image
+                    src={metamask}
+                    alt="metamask"
+                    boxSize="20px"
+                    objectFit="cover"
+                  />
+                  <Text color="white" fontSize="lg">
+                    Metamask
+                  </Text>
+                </Button>
+              </Flex>
+            </ModalBody>
+          </ModalContent>
+        </Modal>
+      </Box>
     </>
   );
 }
